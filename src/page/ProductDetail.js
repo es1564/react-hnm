@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
 
 const ProductDetail = () => {
@@ -31,19 +31,22 @@ const ProductDetail = () => {
             <Col>
                 <div>{product?.title}</div>
                 <div>{product?.price}</div>
-                <div>{product?.price}</div>
-                <div>
-                    <Dropdown>
-                        <Dropdown.Toggle variant="danger" id="dropdown-basic">
-                            사이즈 선택
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            {product?.size.map((menu)=>(
-                                <Dropdown.Item href="#/action-1">{menu}</Dropdown.Item>
-                            ))}
-                        </Dropdown.Menu>
-                    </Dropdown>
+                <div className="choice">
+                {product.choice ? "Conscious choice" : ""}
                 </div>
+                <div>{product?.price}</div>
+                <Dropdown>
+                    <Dropdown.Toggle variant="danger" id="dropdown-basic">
+                        사이즈 선택
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        {product?.size.length > 0 &&
+                            product?.size.map((menu)=>(
+                                <Dropdown.Item href="#/action-1">{menu}</Dropdown.Item>
+                        ))}
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Button variant="dark" className="add-button">추가</Button>
             </Col>
         </Row>
     </Container>

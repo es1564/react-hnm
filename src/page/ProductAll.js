@@ -15,8 +15,8 @@ const ProductAll = () => {
         let url =`https://my-json-server.typicode.com/es1564/react-hnm/products?q=${searchQuery}`
         let response = await fetch(url);
         let data = await response.json();
-        console.log('data>',data)
         setProductList(data)
+        // console.log(data.length)
     }
 
     useEffect(()=>{
@@ -27,10 +27,11 @@ const ProductAll = () => {
     <div>
         <Container>
             <Row>
-                {productList.map((menu)=>(
-                    <Col lg={3}>
-                        <ProductCard1 item={menu}/>
-                    </Col>
+                {productList.length > 0 &&
+                    productList.map((menu)=>(
+                        <Col lg={3}>
+                            <ProductCard1 item={menu}/>
+                        </Col>
                 ))}
             </Row>
         </Container>
