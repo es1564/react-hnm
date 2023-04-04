@@ -32,7 +32,7 @@ const ProductDetail = () => {
                 <div>{product?.title}</div>
                 <div>{product?.price}</div>
                 <div className="choice">
-                {product.choice ? "Conscious choice" : ""}
+                {product?.choice ? "Conscious choice" : ""}
                 </div>
                 <div>{product?.price}</div>
                 <Dropdown>
