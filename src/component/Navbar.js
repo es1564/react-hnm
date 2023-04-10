@@ -3,12 +3,16 @@ import { faUser } from '@fortawesome/free-regular-svg-icons'
 import React from 'react'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
-const Navbar = ({authenticate,setAuthenticate}) => {
+const Navbar = () => {
     const menuList = ['여성','남성','아동'];
     const navigate = useNavigate()
+    const authenticate = useSelector((state) => state.auth.authenticate);
+
     const goToLogin=()=>{
-        authenticate==true?setAuthenticate(false):navigate('/login')
+        navigate('/login')
+        // authenticate==true?setAuthenticate(false):navigate('/login')
     }
     const goToMain=()=>{
         navigate('/')
